@@ -2,18 +2,29 @@ let circles = document.querySelectorAll('.circle');
 let point = document.querySelector('.point');
 let start = document.querySelector('.start');
 let overlay = document.querySelector('.overlay');
+let body = document.querySelector('body');
 
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    
+    
+    setTimeout(() => {
+        preloader.style.display = 'none';
+    }, 500);
+});
 start.addEventListener('click', () => {
     overlay.classList.add('hidden');
     circles.forEach(circle => {
     circle.classList.remove('hidden');
     })
+    body.classList.add('cursor-crosshair');
 });
 
 if(overlay.classList.contains('block')) {
     circles.forEach(circle => {
         circle.classList.add('hidden');
     })
+    body.classList.remove('cursor-crosshair');
 
 }
 function getRandomNumber(min, max) {
