@@ -3,6 +3,13 @@ let point = document.querySelector('.point');
 let start = document.querySelector('.start');
 let overlay = document.querySelector('.overlay');
 let body = document.querySelector('body');
+let main = document.querySelector('.main');
+let timer = document.querySelector('.timer');
+
+
+let sec = 30;
+
+
 
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
@@ -12,11 +19,27 @@ window.addEventListener('load', () => {
         preloader.style.display = 'none';
     }, 500);
 });
+
+
+
 start.addEventListener('click', () => {
     overlay.classList.add('hidden');
     circles.forEach(circle => {
     circle.classList.remove('hidden');
     })
+    
+    if (sec >= 0) {
+        const interval = setInterval(() => {
+            if (sec > 0) {
+                sec--;
+                timer.textContent = sec;
+            } else {
+                clearInterval(interval);
+                timer.textContent = 'Time up!';
+            }
+        }, 1000);
+    }
+
     body.classList.add('cursor-crosshair');
 });
 
@@ -38,8 +61,8 @@ function spawnCircle(circle) {
     let randomX = getRandomNumber(0, maxWidth);
     let randomY = getRandomNumber(0, maxHeight);
 
-    circle.style.left = `${randomX}px`;
-    circle.style.top = `${randomY}px`;
+    circle.style.left = `${Math.min(randomX, maxWidth)}px`;
+    circle.style.top = `${Math.min(randomY, maxHeight)}px`;
 }
 
 let count = 1;
