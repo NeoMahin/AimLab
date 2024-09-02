@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
 
 
 
-start.addEventListener('click', () => {
+start.addEventListener('mousedown', () => {
     overlay.classList.add('hidden');
     circles.forEach(circle => {
     circle.classList.remove('hidden');
@@ -42,6 +42,7 @@ start.addEventListener('click', () => {
 
     body.classList.add('cursor-crosshair');
 });
+
 
 if(overlay.classList.contains('block')) {
     circles.forEach(circle => {
@@ -67,7 +68,7 @@ function spawnCircle(circle) {
 
 let count = 1;
 circles.forEach(circle => {
-    circle.addEventListener('click', () => {
+    circle.addEventListener('mousedown', () => {
         spawnCircle(circle);
         point.textContent = count++;
     });
