@@ -14,7 +14,6 @@ let sec = 30;
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     
-    
     setTimeout(() => {
         preloader.style.display = 'none';
     }, 500);
